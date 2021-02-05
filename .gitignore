@@ -1,0 +1,10 @@
+node_modules/
+logs/
+
+ejabberd/database/
+
+mongooseim/mnesia/
+
+dist/
+
+*.log

@@ -1,0 +1,3 @@
+[submodule "stanza"]
+	path = stanza
+	url = https://github.com/legastero/stanza.git
