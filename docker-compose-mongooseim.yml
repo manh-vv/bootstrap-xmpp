@@ -1,24 +1,16 @@
 version: "3.8"
 services:
-  mongooseim:
+  xmpp-sv:
     image: mongooseim/mongooseim:4.1.0
     container_name: mongooseim
+    environment:
+      JOIN_CLUSTER: "false"
     volumes:
       - ./mongooseim/cfg:/member
-      - ./mongooseim/mnesia:/var/lib/mongooseim
     restart: always
-    ports:
-      - 5281:5280 # ws-xmpp & http-bind
-      - 5443:5285 # tls ws-xmpp & http-bind
-      - 5280:8088 # /api - mongoose_api_admin
-      - 8089:8089 # tls /api/sse
-      - 5288:5288 # /api - mongoose_api 
-      - 5222:5222 # tls c2s shaper
-      - 5269:5269 # s2s shaper
-      - 8888:8888 # password: secret
   nginx:
     depends_on:
-      - mongooseim
+      - xmpp-sv
     image: nginx:1.19
     container_name: was
     restart: always

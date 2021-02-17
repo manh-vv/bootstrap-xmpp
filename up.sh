@@ -26,3 +26,6 @@ echo "execute command:"
 info "$CMD"
 
 $CMD
+
+# clean
+sh down.sh
